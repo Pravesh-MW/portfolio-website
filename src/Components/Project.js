@@ -5,25 +5,25 @@ import ShareEasy from '../Assets/ShareEasy.png'
 import ProjectCard from '../lib/ProjectCard';
 const project = [
     {
-        title:"The Coldest Sunset",
-        description: "A short film about a young man who is struggling to cope with the loss of his mother.",
+        title:"ShareEase: File Sharing",
+        description: "Developed a user-friendly file sharing platform, Share Easy, allowing users to seamlessly upload, share files with others.",
         image: ShareEasy,
-        link: "https://www.youtube.com/watch?v=8Q8w6kx",
-        techStack : ["Python", "React", "MERN"],
+        link: "https://github.com/Pravesh-MW",
+        techStack : ["MERN", "Multer"],
     },
     {
-        title:"The Coldest Sunset",
-        description: "A short film about a young man who is struggling to cope with the loss of his mother.",
+        title:"AI-Generated Art Studio",
+        description: "Created an AI Image Generator that enables users to experiment with various prompts, refining their images based on input.",
         image: AI,
-        link: "https://www.youtube.com/watch?v=8Q8w6kx",
-        techStack : ["Python", "React", "MERN"],
+        link: "https://github.com/Pravesh-MW",
+        techStack : ["MERN", "OpenAI", "Cloudinary"],
     },
     {
-        title:"The Coldest Sunset",
-        description: "A short film about a young man who is struggling to cope with the loss of his mother.",
+        title:"Antivirus for Ransomware",
+        description: "Developed a user-friendly antivirus application with customizable scanning and robust threat detection for comprehensive system protection.",
         image: AntiVirus,
-        link: "https://www.youtube.com/watch?v=8Q8w6kx",
-        techStack : ["Python", "React", "MERN"],
+        link: "https://github.com/Pravesh-MW",
+        techStack : ["Python"],
     }
 ]
 

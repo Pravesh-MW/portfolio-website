@@ -2,8 +2,8 @@ import React from 'react';
 
 const ProjectCard = ({project, key}) => {
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg ">
-            <div className='object-cover'>
+        <div className="max-w-sm rounded overflow-hidden shadow-lg min-h-[500px] border-2 border-black">
+            <div className='flex flex-col justify-start items-center max-h-[300px]'>
                 <img className="object-cover w-full" src={project.image} alt="Sunset in the mountains" />
             </div>
             <div className="px-6 py-4">
