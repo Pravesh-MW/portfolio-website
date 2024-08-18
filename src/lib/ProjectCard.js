@@ -6,7 +6,7 @@ const project = {
     link: "https://www.youtube.com/watch?v=8Q8w6kx",
     techStack : ["Python", "React", "MERN"],
 }
-const ProjectCard = () => {
+const ProjectCard = ({key}) => {
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg ">
             <img
@@ -22,7 +22,7 @@ const ProjectCard = () => {
             </div>
             <div className="px-6 pt-4 pb-2">
                 {project.techStack.map((tech)=>{
-                   return (<span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                   return (<span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" key={tech}>
                     {tech}
                     </span>)
                 })}

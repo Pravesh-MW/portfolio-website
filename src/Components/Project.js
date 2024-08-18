@@ -10,9 +10,9 @@ const Project = () => {
             </div>
             <div className='grid gap-4 justify-center items-center mx-auto px-auto pb-8 mb-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
             {/* <div className='flex flex-row justify-center items-center space-x-4 pb-8 mb-8'> */}
-                <ProjectCard/>
-                <ProjectCard/>
-                <ProjectCard/>
+                <ProjectCard />
+                <ProjectCard />
+                <ProjectCard />
             </div>
         </div>
     );
