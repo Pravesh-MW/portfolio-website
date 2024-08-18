@@ -7,8 +7,7 @@ import Header from "./lib/Header";
 
 function App() {
   return (
-    <div className="relative bg-gradient-to-r from-slate-300 to-slate-500">
-      <button onClick={()=>{}}></button>
+    <div className="relative w-full bg-gradient-to-r from-slate-300 to-slate-500">
       <Header />
       <Home />
       <Project />

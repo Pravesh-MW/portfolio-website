@@ -48,10 +48,10 @@ const techIcon = {
 }
 const TechStack = () => {
     return (
-        <div id='techStack' className='h-screen flex flex-col space-y-8 m-8 bg-gradient-to-r from-slate-300 to-slate-500'>
-            <div className='flex flex-col justify-center items-center h-1/3 space-y-4'>
+        <div id='techStack' className='min-h-screen flex flex-col space-y-8 bg-gradient-to-r from-slate-300 to-slate-500 m-4 p-2'>
+            <div className='flex flex-col justify-center items-center h-1/3 space-y-4 mt-16'>
                 <p className='text-4xl text-black font-bold'>Tech Stack</p>
-                <p className='text-ls text-gray-800'>I'm best in Creating arts form These Tech Stack</p>
+                <p className='text-ls text-gray-800 px-24'>I'm best in Creating arts form These Tech Stack</p>
             </div>
             <div className='flex flex-row items-center justify-center space-x-8'>
             

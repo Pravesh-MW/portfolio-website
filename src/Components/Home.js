@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div id='home' className='flex justify-center items-center h-screen bg-gradient-to-r from-slate-300 to-slate-500'>
+        <div id='home' className='flex justify-center items-center h-screen bg-gradient-to-r from-slate-300 to-slate-500 m-4 p-2'>
             <div className='flex items-start justify-center flex-col space-y-2'>
                 <p className='text-xl font-bold text-green-800'>Hi there i</p>
                 <h1 className='text-4xl font-bold text-black'>I'm A Full Stack Developer</h1>

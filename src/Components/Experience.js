@@ -3,7 +3,7 @@ import ExperienceCard from "../lib/ExperienceCard";
 
 const Experience = () => {
   return (
-    <div id='experience' className="flex flex-col m-8 space-y-4 justify-center items-center h-screen bg-gradient-to-r from-slate-300 to-slate-500">
+    <div id='experience' className="flex flex-col space-y-4 justify-center items-center min-h-screen bg-gradient-to-r from-slate-300 to-slate-500 m-4 p-2">
             <div className='flex flex-col justify-center items-center h-1/3 space-y-4'>
                 <p className='text-4xl text-black font-bold'>Experience</p>
                 <p className='text-ls text-gray-800'>Organization that help me to grow</p>
