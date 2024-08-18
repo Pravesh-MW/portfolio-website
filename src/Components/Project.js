@@ -3,7 +3,7 @@ import ProjectCard from '../lib/ProjectCard';
 
 const Project = () => {
     return (
-        <div className='flex flex-col space-y-8 bg-gradient-to-r from-slate-300 to-slate-500 m-8'>
+        <div id='project' className='flex flex-col space-y-8 h-screen bg-gradient-to-r from-slate-300 to-slate-500 m-8'>
             <div className='flex flex-col justify-center items-center h-1/3 space-y-4'>
                 <p className='text-4xl text-black font-bold'>Project</p>
                 <p className='text-ls text-gray-800'>These are my best arts</p>

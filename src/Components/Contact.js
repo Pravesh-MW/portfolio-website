@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <div className="flex flex-col m-8 space-y-4 justify-start items-center bg-gradient-to-r from-slate-300 to-slate-500">
+        <div id='contact' className="flex flex-col m-8 h-screen space-y-4 justify-start items-center bg-gradient-to-r from-slate-300 to-slate-500">
             <div className='flex flex-col justify-center items-center h-1/3 space-y-4'>
                 <p className='text-4xl text-black font-bold'>Contact</p>
                 <p className='text-ls text-gray-800'>Build a strong connection to change the world</p>
