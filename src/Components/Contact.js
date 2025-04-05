@@ -139,7 +139,7 @@ const Contact = () => {
                                     rows='4'
                                     className='w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white'
                                 ></textarea>
-                            </div>
+            </div>
 
                             <button
                                 type='submit'
@@ -148,7 +148,7 @@ const Contact = () => {
                                 <Send className='w-5 h-5' />
                                 <span>Send Message</span>
                             </button>
-                        </form>
+                </form>
                     </div>
                 </div>
             </div>
