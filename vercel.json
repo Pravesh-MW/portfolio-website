@@ -12,10 +12,7 @@
   "rewrites": [
     {
       "source": "/static/(.*)",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      },
-      "continue": true
+      "destination": "/static/$1"
     },
     {
       "source": "/favicon.ico",
@@ -35,6 +32,15 @@
     }
   ],
   "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
