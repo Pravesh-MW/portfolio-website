@@ -1,8 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#1E40AF',
+      },
+    },
     // screens: {
     //   'sm': '640px',
     //   // => @media (min-width: 640px) { ... }

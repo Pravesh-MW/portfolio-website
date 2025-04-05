@@ -1,48 +1,87 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../Context/ThemeContext';
 import { 
-    Code2,
-    Layout,
-    Database,
-    GitBranch,
-    Package,
-    Cpu,
+    Code2, 
+    Database, 
+    Globe, 
     Terminal,
-    Settings,
-    Smartphone,
-    Bug
+    GitBranch,
+    Cpu,
+    FileCode,
+    Server,
+    Network,
+    Layers
 } from 'lucide-react';
 
 const TechStack = () => {
-    const reactSkills = [
-        { name: 'React', icon: Code2, level: 'Advanced' },
-        { name: 'Next.js', icon: Layout, level: 'Advanced' },
-        { name: 'Redux', icon: Database, level: 'Advanced' },
-        { name: 'React Router', icon: GitBranch, level: 'Advanced' },
-        { name: 'React Query', icon: Package, level: 'Intermediate' },
-        { name: 'React Hook Form', icon: Cpu, level: 'Intermediate' },
-        { name: 'React Spring', icon: Terminal, level: 'Intermediate' },
-        { name: 'React Testing', icon: Bug, level: 'Intermediate' },
-        { name: 'React Native', icon: Smartphone, level: 'Intermediate' },
-        { name: 'React DevTools', icon: Settings, level: 'Advanced' }
+    const { isDarkMode } = useContext(ThemeContext);
+
+    const skills = [
+        {
+            category: 'Languages',
+            icon: Code2,
+            items: ['Python', 'JavaScript', 'C', 'C++', 'SQL']
+        },
+        {
+            category: 'Web Development',
+            icon: Globe,
+            items: ['React.js', 'Node.js', 'Express', 'HTML', 'CSS', 'Flask', 'FastAPI']
+        },
+        {
+            category: 'Databases',
+            icon: Database,
+            items: ['MongoDB', 'MySQL', 'Firebase']
+        },
+        {
+            category: 'Tools',
+            icon: Terminal,
+            items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Bitvise SSH']
+        },
+        {
+            category: 'Concepts',
+            icon: Cpu,
+            items: ['Data Structures & Algorithms', 'OOP', 'OS', 'DBMS', 'Agile']
+        }
     ];
 
     return (
-        <div id='techStack' className='min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-gray-100'>
-            <h1 className='text-4xl font-bold mb-12 text-center text-black'>React Ecosystem</h1>
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full max-w-6xl'>
-                {reactSkills.map((skill, index) => (
-                    <div 
-                        key={index}
-                        className='flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1'
-                    >
-                        <skill.icon className='w-12 h-12 text-blue-600 mb-4' />
-                        <h3 className='text-lg font-semibold text-black mb-2'>{skill.name}</h3>
-                        <span className='text-sm text-gray-600'>{skill.level}</span>
-                    </div>
-                ))}
+        <div id='techstack' className='min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800'>
+            <div className='max-w-4xl w-full space-y-8'>
+                <div className='text-center space-y-4'>
+                    <h1 className='text-4xl font-bold text-black dark:text-white'>
+                        My <span className='text-blue-600 dark:text-blue-400'>Tech Stack</span>
+                    </h1>
+                    <p className='text-lg text-gray-600 dark:text-gray-300'>
+                        Technologies and tools I work with
+                    </p>
+                </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    {skills.map((skill, index) => (
+                        <div 
+                            key={index}
+                            className='bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300'
+                        >
+                            <div className='flex items-center space-x-3 mb-4'>
+                                <skill.icon className='w-6 h-6 text-blue-600 dark:text-blue-400' />
+                                <h2 className='text-xl font-semibold text-gray-800 dark:text-white'>{skill.category}</h2>
+                            </div>
+                            <div className='flex flex-wrap gap-2'>
+                                {skill.items.map((item, idx) => (
+                                    <span 
+                                        key={idx}
+                                        className='px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm'
+                                    >
+                                        {item}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
-}
+};
 
 export default TechStack; 

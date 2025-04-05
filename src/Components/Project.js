@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { 
     Github, 
     ExternalLink, 
@@ -12,8 +12,10 @@ import {
     BarChart3,
     Clock
 } from 'lucide-react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const Project = () => {
+    const { isDarkMode } = useContext(ThemeContext);
     const [hoveredProject, setHoveredProject] = useState(null);
 
     const projects = [
@@ -59,15 +61,15 @@ const Project = () => {
     ];
 
     return (
-        <div id='project' className='min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-gray-100'>
-            <h1 className='text-4xl font-bold mb-4 text-center text-black'>Projects</h1>
-            <p className='text-gray-600 mb-12 text-center max-w-2xl'>Explore my recent work and contributions to the tech community</p>
+        <div id='projects' className='min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800'>
+            <h1 className='text-4xl font-bold mb-4 text-center text-black dark:text-white'>Projects</h1>
+            <p className='text-gray-600 mb-12 text-center max-w-2xl dark:text-gray-300'>Explore my recent work and contributions to the tech community</p>
             
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl w-full'>
                 {projects.map((project, index) => (
                     <div
                         key={index}
-                        className='bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-all duration-300'
+                        className='bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-all duration-300'
                         onMouseEnter={() => setHoveredProject(index)}
                         onMouseLeave={() => setHoveredProject(null)}
                     >
@@ -100,14 +102,14 @@ const Project = () => {
                         </div>
 
                         <div className='p-6'>
-                            <h3 className='text-xl font-bold text-black mb-2'>{project.title}</h3>
-                            <p className='text-gray-600 mb-4'>{project.description}</p>
+                            <h3 className='text-xl font-bold text-black dark:text-white mb-2'>{project.title}</h3>
+                            <p className='text-gray-600 dark:text-gray-300 mb-4'>{project.description}</p>
                             
                             <div className='flex flex-wrap gap-2 mb-4'>
                                 {project.technologies.map((tech, techIndex) => (
                                     <span
                                         key={techIndex}
-                                        className='px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm'
+                                        className='px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm'
                                     >
                                         {tech}
                                     </span>
@@ -118,9 +120,9 @@ const Project = () => {
                                 {project.features.map((feature, featureIndex) => (
                                     <div
                                         key={featureIndex}
-                                        className='flex items-center text-gray-600'
+                                        className='flex items-center text-gray-600 dark:text-gray-300'
                                     >
-                                        <feature.icon className='w-4 h-4 mr-2 text-blue-600' />
+                                        <feature.icon className='w-4 h-4 mr-2 text-blue-600 dark:text-blue-400' />
                                         <span className='text-sm'>{feature.text}</span>
                                     </div>
                                 ))}

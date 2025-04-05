@@ -1,17 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
-
-const Navitem = () => {
-    return (
-        <>
-            <a href='#project' className='text-black no-underline hover:bg-black hover:text-white px-4 py-2 transition-all duration-300 rounded-md'>Projects</a>
-            <a href='#experience' className='text-black no-underline hover:bg-black hover:text-white px-4 py-2 transition-all duration-300 rounded-md'>Experience</a>
-            <a href='#techStack' className='text-black no-underline hover:bg-black hover:text-white px-4 py-2 transition-all duration-300 rounded-md'>Skills</a>
-            <a href='#resume' className='text-black no-underline hover:bg-black hover:text-white px-4 py-2 transition-all duration-300 rounded-md'>Resume</a>
-            <a href='#contact' className='text-black no-underline hover:bg-black hover:text-white px-4 py-2 transition-all duration-300 rounded-md'>Contact</a>
-        </>
-    );
-};
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,20 +9,19 @@ const Header = () => {
     const [isNearTop, setIsNearTop] = useState(false);
     const headerRef = useRef(null);
     const timeoutRef = useRef(null);
+    const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
     const handleClick = () => {
         setIsOpen(!isOpen);
     }
 
     const resetTimeout = () => {
-        // Clear existing timeout
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
         
-        // Set new timeout to hide header after 3 seconds of inactivity
         timeoutRef.current = setTimeout(() => {
-            if (window.scrollY > 100) { // Only hide if not at the top of the page
+            if (window.scrollY > 100) {
                 setIsVisible(false);
             }
         }, 3000);
@@ -43,7 +31,6 @@ const Header = () => {
         const controlHeader = () => {
             const currentScrollY = window.scrollY;
             
-            // Show header when scrolling up or when near the top
             if (currentScrollY < lastScrollY || currentScrollY < 100) {
                 setIsVisible(true);
                 resetTimeout();
@@ -55,7 +42,6 @@ const Header = () => {
         };
 
         const handleMouseMove = (e) => {
-            // Show header when mouse is near the top of the page
             if (e.clientY < 100) {
                 setIsVisible(true);
                 setIsNearTop(true);
@@ -71,7 +57,6 @@ const Header = () => {
             }
         };
 
-        // Initial setup
         resetTimeout();
 
         window.addEventListener('scroll', controlHeader);
@@ -88,6 +73,15 @@ const Header = () => {
         };
     }, [lastScrollY]);
 
+    const navItems = [
+        { name: 'Home', href: '#home' },
+        { name: 'Skills', href: '#techstack' },
+        { name: 'Projects', href: '#projects' },
+        { name: 'Experience', href: '#experience' },
+        { name: 'Resume', href: '#resume' },
+        { name: 'Contact', href: '#contact' }
+    ];
+
     return (
         <div 
             ref={headerRef}
@@ -95,30 +89,78 @@ const Header = () => {
                 (isVisible || isNearTop) ? 'translate-y-0' : '-translate-y-full'
             }`}
         >
-            <div className='flex flex-row h-16 flex-wrap bg-white/80 backdrop-blur-md'>
-                <div className='flex justify-start items-center float-left w-1/2'>
-                    <p className='text-black text-2xl font-bold ml-4'>
-                        <a href='#home' className='hidden lg:flex text-black no-underline hover:text-blue-600 transition-colors duration-300'>Pravesh Kumar Bind</a>
-                        <a href='#home' className='hidden md:flex lg:hidden text-black no-underline hover:text-blue-600 transition-colors duration-300'>Pravesh Bind</a>
-                        <a href='#home' className='md:hidden text-black no-underline hover:text-blue-600 transition-colors duration-300'>Pravesh</a>
-                    </p>
+            <div className='flex flex-row h-16 items-center justify-between px-6 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700'>
+                <div className='flex items-center'>
+                    <a href='#home' className='text-2xl font-bold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300'>
+                        <span className='hidden lg:inline'>Pravesh K Bind</span>
+                        <span className='hidden md:inline lg:hidden'>Pravesh Bind</span>
+                        <span className='md:hidden'>Pravesh</span>
+                    </a>
                 </div>
-                <div className='hidden md:flex flex-row justify-end items-center float-right w-1/2 pr-4'>
-                    <Navitem />
-                </div>
-                <div className='md:hidden flex flex-col justify-center items-end float-right w-1/2 pr-4'>
-                    <button onClick={handleClick} className='flex justify-center items-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-300'>
-                        {isOpen ? <X className='text-xl text-black' /> : <Menu className='text-xl text-black' />}
+
+                <div className='hidden md:flex items-center space-x-6'>
+                    {navItems.map((item) => (
+                        <a
+                            key={item.name}
+                            href={item.href}
+                            className={`text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 transition-colors duration-300 rounded-md`}
+                        >
+                            {item.name}
+                        </a>
+                    ))}
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+                        aria-label="Toggle theme"
+                    >
+                        {isDarkMode ? (
+                            <Sun className="w-5 h-5 text-yellow-500" />
+                        ) : (
+                            <Moon className="w-5 h-5 text-gray-700" />
+                        )}
                     </button>
-                    {isOpen &&
-                        <div className='absolute top-16 right-0 flex flex-col space-y-2 items-center bg-white/80 backdrop-blur-md shadow-lg px-4 py-2 rounded-md'>
-                            <Navitem />
-                        </div>
-                    }
+                </div>
+
+                <div className='md:hidden flex items-center space-x-4'>
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+                        aria-label="Toggle theme"
+                    >
+                        {isDarkMode ? (
+                            <Sun className="w-5 h-5 text-yellow-500" />
+                        ) : (
+                            <Moon className="w-5 h-5 text-gray-700" />
+                        )}
+                    </button>
+                    <button 
+                        onClick={handleClick}
+                        className='p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300'
+                    >
+                        {isOpen ? <X className='w-5 h-5 text-gray-700 dark:text-gray-300' /> : <Menu className='w-5 h-5 text-gray-700 dark:text-gray-300' />}
+                    </button>
                 </div>
             </div>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className='md:hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700'>
+                    <div className='flex flex-col space-y-2 p-4'>
+                        {navItems.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                className={`text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 transition-colors duration-300 rounded-md`}
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default Header;
