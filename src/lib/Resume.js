@@ -32,7 +32,7 @@ const Resume = () => {
                             <div className='border-l-4 border-blue-600 dark:border-blue-400 pl-4'>
                                 <h3 className='text-lg font-medium text-gray-700 dark:text-gray-200'>NIT Jalandhar</h3>
                                 <p className='text-gray-600 dark:text-gray-300'>B.tech IT</p>
-                                <p className='text-sm text-gray-500 dark:text-gray-400'>2020 - 2023</p>
+                                <p className='text-sm text-gray-500 dark:text-gray-400'>2020 - 2024</p>
                             </div>
                         </div>
                     </div>
